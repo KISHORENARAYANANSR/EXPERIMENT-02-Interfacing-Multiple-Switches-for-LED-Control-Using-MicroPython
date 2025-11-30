@@ -2,13 +2,13 @@
 
 
  
-## NAME:
+## NAME: KISHORE NARAYANAN S R
 
-## DEPARTMENT:
+## DEPARTMENT: B.E CSE(IoT)
 
-## ROLL NO:
+## ROLL NO: 212223110023
 
-## DATE OF EXPERIMENT:
+## DATE OF EXPERIMENT: 11/09/2025
 
 ## AIM
 
@@ -52,6 +52,8 @@ A MicroPython script reads the switch states and controls the LEDs accordingly.
 
 ### CIRCUIT DIAGRAM
  ![image](https://github.com/user-attachments/assets/1c7234b9-5041-4156-94b8-0b846adb6b8e)
+
+ 
     Figure-01 circuit diagram of digital input interface 
 
 
@@ -64,25 +66,57 @@ Connect LED 2 to GP17 via a 330Ω resistor.
 Connect the other terminals of the switches to GND.
 
 ## PROGRAM (MicroPython)
-''''
+```python
+from machine import Pin
+from time import sleep
+
+switch1 = Pin(1, Pin.IN, Pin.PULL_UP)
+switch2 = Pin(27, Pin.IN, Pin.PULL_UP)
+
+led1 = Pin(13, Pin.OUT)
+led2 = Pin(17, Pin.OUT)
+
+while True:
+    sw1_state = switch1.value() 
+    sw2_state = switch2.value()
+    
+    print("Switch 1 state:", sw1_state)
+    print("Switch 2 state:", sw2_state)
+    
+    led1.value(0)
+    led2.value(0)
+    
+    if sw1_state == 1 and sw2_state == 1:
+        led1.value(0)
+        led2.value(0)
+    elif sw1_state == 1:
+        led1.value(0)
+        sleep(0.5)
+        led1.value(1)
+    elif sw2_state == 1:
+        led2.value(0)
+        sleep(0.5)
+        led2.value(1)
+    
+    sleep(0.1)
+```
+### OUTPUT 00
+
+<img width="626" height="491" alt="image" src="https://github.com/user-attachments/assets/2ee83579-72e0-4d3a-aa88-9e548bd2b8de" />
 
 
+### OUTPUT 01
 
- 
+<img width="682" height="536" alt="image" src="https://github.com/user-attachments/assets/bb6f0bd6-1754-4b6c-86bf-8c1889fec2a1" />
 
-## OUTPUT
+### OUTPUT 10
 
-
-
-FIGURE-02: CIRCUIT CONNECTION
-
-FIGURE-03: CODE EXECUTION OUTPUT
-
-FIGURE-04: LED STATUS BASED ON SWITCH INPUTS
-## TIMING DIGAGRAM 
+<img width="643" height="491" alt="image" src="https://github.com/user-attachments/assets/8e2cbd64-057d-4397-bebe-a3dd2053a7a2" />
 
 
-UPLOAD YOUR TIMING DIGARAM HERE 
+### OUTPUT 11
+
+<img width="624" height="441" alt="image" src="https://github.com/user-attachments/assets/f7c779df-1d6a-4182-a8ca-f49e04932979" />
 
 
 
